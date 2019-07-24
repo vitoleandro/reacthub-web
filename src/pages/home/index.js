@@ -27,7 +27,7 @@ export default class Home extends React.Component {
     if(text.length >= 3) {
       this.setState({isLoading: true})
       const response = await Api.get('reactjs/repos', {
-        headers: {'Authorization': 'token 0a84cf10d821fab5f00d22a865ac513bb8849772'}
+        headers: {'Authorization': 'token a7c5b24f1ccd36fdc6d18c39a4a42cabdd5f6c5b'}
       });
       const { data } = response
       this.setState({repositories: data, isLoading: false})

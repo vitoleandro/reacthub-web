@@ -19,12 +19,12 @@ export const SearchBar = styled.input `
 `
 
 export const RepositoryList = styled.section `
-  display: flex;
+  /* display: flex; */
   flex: 1;
   width: 100%;
-  height: calc(100% - 40vw);
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* height: calc(100% - 40vw); */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
   overflow: auto;
 `
