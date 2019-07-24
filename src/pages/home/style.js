@@ -5,7 +5,7 @@ export const SearchBar = styled.input `
   width: 40vw;
   height: 60px;
   border: none;
-  margin-bottom: 32px;
+  margin-bottom: 14px;
   border-radius: 32px;  
   background: #15181C;
   box-shadow: 0 12px 21px rgba(25,29,34, 1);
@@ -18,13 +18,43 @@ export const SearchBar = styled.input `
   &:focus { outline: 0; border: 2px solid #50B0C9; }
 `
 
+export const SearchBarResult = styled.div `
+  display: block;
+  width: 40vw;
+`
+
+export const SearchBarResultText = styled.span `
+  position: relative;
+  font-size: 12px;
+  font-weight: bold;
+  color: #60656B;
+  margin-right: 24px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: -16px;
+    top: 5px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #50B0C9;
+  }
+`
+
+export const SearchBarResultCleanerBtn = styled.button `
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-weight: bold;
+  color: #60656B;
+  border-bottom: #60656B;
+  cursor: pointer;
+  &:focus { outline: none; }
+`
+
 export const RepositoryList = styled.section `
-  /* display: flex; */
   flex: 1;
   width: 100%;
-  /* height: calc(100% - 40vw); */
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  /* align-items: center; */
   overflow: auto;
 `

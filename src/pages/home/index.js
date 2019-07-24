@@ -3,10 +3,12 @@ import HeaderApp from '../../components/HeaderApp';
 import RepoView from '../../components/RepoView';
 import { css } from '@emotion/core';
 import { BarLoader } from 'react-spinners';
+import { GITHUB_TOKEN } from '../../services/Settings';
 import Api from '../../services/Api';
 
+
 import { MainContainer, GridRow, GridColumn } from '../../style';
-import { SearchBar, RepositoryList } from './style';
+import { SearchBar, RepositoryList, SearchBarResult, SearchBarResultText, SearchBarResultCleanerBtn } from './style';
 
 const override = css`
     display: block;
@@ -27,7 +29,7 @@ export default class Home extends React.Component {
     if(text.length >= 3) {
       this.setState({isLoading: true})
       const response = await Api.get('reactjs/repos', {
-        headers: {'Authorization': 'token a7c5b24f1ccd36fdc6d18c39a4a42cabdd5f6c5b'}
+        headers: {'Authorization': `token ${GITHUB_TOKEN}`}
       });
       const { data } = response
       this.setState({repositories: data, isLoading: false})
@@ -46,12 +48,27 @@ export default class Home extends React.Component {
     )
   };
 
+  clearRepositories = () => {
+    this.setState({repositories: []});
+  }
+
+  renderSearchedLength = (size) => {
+    return(
+      <SearchBarResult className="animated fadeIn delay-1s">
+        <SearchBarResultText>Total de {size} items apresentados.</SearchBarResultText>
+        <SearchBarResultCleanerBtn onClick={this.clearRepositories}>Limpar consulta</SearchBarResultCleanerBtn>
+      </SearchBarResult>
+    )
+  }
+
   render() {
+
     return (
       <>
         <HeaderApp></HeaderApp>
         <MainContainer>
           <SearchBar onKeyUp={this.searchRepository} placeholder="Diretorio, usuário ..." />
+          {this.state.repositories.length > 0 ? this.renderSearchedLength(this.state.repositories.length) : ''}
           <BarLoader
             css={override}
             sizeUnit={"px"}

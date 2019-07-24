@@ -1,6 +1,7 @@
 import React from 'react';
+import RepoCardHeader from './RepoCardHeader';
 
-import { RepoContainer } from './style';
+import { RepoContainer, RepoDescription } from './style';
 
 export default class RepoView extends React.Component {
 
@@ -8,8 +9,8 @@ export default class RepoView extends React.Component {
     const {repo} = this.props;
     return (
         <RepoContainer className="animated flipInY">
-          <img src={repo.owner.avatar_url} alt={repo.owner.url} height="64px" />
-          <h3>{repo.full_name}</h3>
+          <RepoCardHeader repo={repo}></RepoCardHeader>
+          <RepoDescription>{repo.description}</RepoDescription>
         </RepoContainer>
     )
   }
